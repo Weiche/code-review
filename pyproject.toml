@@ -1,0 +1,10 @@
+[project]
+name = "code-review"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "jsoncomment>=0.4.2",
+    "pydantic-ai[logfire]>=0.0.52",
+]
