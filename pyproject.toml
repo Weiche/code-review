@@ -6,5 +6,5 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "jsoncomment>=0.4.2",
-    "pydantic-ai[logfire]>=0.0.52",
+    "pydantic-ai[logfire]>=0.0.53",
 ]
