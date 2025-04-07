@@ -1,5 +1,4 @@
 from pathlib import Path
-from plistlib import InvalidFileException
 from typing import Any, Dict, List, Optional
 
 from jsoncomment import JsonComment
@@ -44,7 +43,7 @@ def create_mcp_servers() -> List[MCPServer]:
     config = load_config()
     servers: List[MCPServer] = []
     if config is None:
-        raise InvalidFileException("File is not parsable")
+        raise ValueError("config.json file is not parsable")
 
     for _, server_config in config.mcp_servers.items():
         if server_config.get("command", False):
