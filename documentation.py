@@ -3,7 +3,7 @@ import os
 
 from pydantic_ai import Agent
 
-from mcp_manager.mcp_preset import create_mcp_servers
+from config_manager.config import create_mcp_servers
 from prompt import get_doc_agent_sys_prompt
 
 logger = logging.getLogger("Doc")

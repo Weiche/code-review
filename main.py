@@ -3,12 +3,13 @@ import os
 import shutil
 import subprocess
 import sys
+from plistlib import InvalidFileException
 
 import logfire
 
-from mcp_manager.mcp_preset import load_config
-from review import review_code
+from config_manager.config import load_config
 from documentation import update_readme
+from review import review_code
 
 logfire.configure(token=os.getenv("LOGFIRE_KEY"))
 logger = logging.getLogger("CodeAnalyze")
@@ -47,6 +48,10 @@ async def main():
         if not shutil.which("repomix"):
             raise ModuleNotFoundError("Need repomix to work")
         cfg = load_config()
+
+        if cfg is None:
+            raise InvalidFileException("Invalid config.json file or file not exist")
+        
         default_model: str = cfg.default_model
         code_path = os.path.abspath(sys.argv[1] if len(sys.argv) > 1 else os.getcwd())
         if not os.path.exists(code_path):
